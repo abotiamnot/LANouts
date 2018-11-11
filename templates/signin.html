@@ -1,0 +1,24 @@
+
+{% extends 'layout.html' %}
+
+{% block css %}
+    <link href="static/styles/bootstrap.min.css" rel="stylesheet">
+    <link href="static/styles/signin.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+  <body class="text-center">
+    <form class="form-signin" method="POST">
+      <img class="mb-3" src="static/images/LOG_IN.png" alt="" width="314" height="240">
+      <h1 class="h3 mb-3 font-weight-normal">LOG THE HELL IN</h1>
+      <label for="inputName" class="sr-only">Username</label>
+      <input type="text" id="inputName" class="form-control" placeholder="Username" name="name" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="LAN Pass" 
+      name="pass" required>
+      <div class="random" style="height: 10px">
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+  </body>
+{% endblock %}

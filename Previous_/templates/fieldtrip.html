@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+<link href="https://getbootstrap.com/docs/4.1/examples/starter-template/starter-template.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+{% include 'includes/navbar.html' %}
+
+<h1>Field Trip</h1>
+<div class="container">
+	<div class="card card-body bg-light">
+		<form action="/fieldtrip" method="POST">
+			<div>
+				<label for="inputBlock">Village/ District</label>
+				<input type="text" class="form-control" id="inputBlock" placeholder="Grambharti" name="place_">
+			</div>
+			<div>
+				<label for="inputBlock">City</label>
+				<input type="text" class="form-control" id="inputBlock" placeholder="Near Gandhinagar" name="city_">
+			</div>
+			<div>
+				<label for="inputBlock">State</label>
+				<input type="text" class="form-control" id="inputBlock" placeholder="Gujarat" name="state_">
+			</div>
+			<div class="form-group ">
+				<label class="control-label " for="date">
+					From
+				</label>
+			</div>
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="fa fa-calendar">
+					</i>
+				</div>
+				<input class="form-control" id="to_date" name="date" placeholder="MM/DD/YYYY" type="text"/ >
+			</div>
+			<div class="form-group ">
+				<label class="control-label " for="date">
+					To
+				</label>
+			</div>
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-calendar"></i>
+					</div>
+					<input class="form-control" id="from_date" name="date" placeholder="MM/DD/YYYY" type="text"/ >
+				</div>
+			<div class="form-group">
+				<div>
+					<button class="btn btn-primary " name="submit" type="submit">
+						Submit
+					</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+		{% endblock %}
+
+{% block js %}
+  <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+
+
+{%endblock%}

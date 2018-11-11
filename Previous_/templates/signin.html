@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+<link href="https://getbootstrap.com/docs/4.1/examples/sign-in/signin.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<body class="text-center">
+   <form class="form-signin" method="POST">
+       {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-success">
+          {% for message in messages %}
+            <strong> {{message}} </strong>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endwith %}
+     <img class="mb-4" src="http://nif.org.in/images/nif_transparent.png" alt="" width="250" height="179">
+     <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+     <label for="inputID" class="sr-only">Employee ID</label>
+     <input type="text" id="inputID" class="form-control" name="employee_ID" placeholder="Employee ID" required >
+     <label for="inputPassword" class="sr-only">Password</label>
+     <input type="password" id="inputPassword" class="form-control" name="employee_pass" placeholder="Password" required>
+     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+     <a href="/register" class="btn btn-lg btn-warning btn-block">New User</a>
+   </form>
+ </body>
+{% endblock %}
