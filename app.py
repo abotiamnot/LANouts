@@ -34,12 +34,38 @@ def chatroom():
                                user = session['name'])
     return redirect(url_for('signin'))
 
+@app.route('/testroom', methods=['GET', 'POST'])
+def testroom():
+    return render_template('testroom.html',
+                           user=session['name'])
+
+@app.route('/filetranfer', methods=['GET', 'POST'])
+def filetransfer():
+	if 'sign_in' in session:
+		return render_template('file_transfer.html')
+	return redirect(url_for('signin'))
+
 @app.route('/mainmenu')
 def main_menu():
 	if 'sign_in' in session:
 		return render_template('main_menu.html')
 	return redirect(url_for('signin'))
 
+def messageRecived():
+    print( 'message was received!!!' )
+
+@socketio.on( 'my event' )
+def handle_my_custom_event( json ):
+    print( 'recived my event: ' + str( json ) )
+    socketio.emit( 'my response', json, callback=messageRecived )
+#
+# def messageRecived():
+#   print( 'message was received!!!' )
+#
+# @socketio.on( 'my event' )
+# def handle_my_custom_event( json ):
+#   print( 'recived my event: ' + str( json ) )
+# socketio.emit( 'my response', json, callback=messageRecived )
 
 if __name__ == "__main__":
     ip_ = find_local()
