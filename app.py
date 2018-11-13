@@ -58,14 +58,6 @@ def messageRecived():
 def handle_my_custom_event( json ):
     print( 'recived my event: ' + str( json ) )
     socketio.emit( 'my response', json, callback=messageRecived )
-#
-# def messageRecived():
-#   print( 'message was received!!!' )
-#
-# @socketio.on( 'my event' )
-# def handle_my_custom_event( json ):
-#   print( 'recived my event: ' + str( json ) )
-# socketio.emit( 'my response', json, callback=messageRecived )
 
 if __name__ == "__main__":
     ip_ = find_local()
